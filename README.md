@@ -5,10 +5,10 @@
 
 ## Overview - A Python implemntation for A* Path Planning algorithm
 
-Warehouse robots are one among the many uses on which robotics has been implemented. With the aquisition of Kiva robotics by Amazon, the potential in such warehouse logisitics systems is evident. 
-The github repository implements a software for path planning that aids an warehouse robot in the autonomous navigation. This is developed using Python for (A fictional situation for the ENPM808X Midterm project). 
+TurtleBot is a low-cost, personal robot kit with open-source software. TurtleBot was created at Willow Garage by Melonee Wise and Tully Foote in November 2010. With TurtleBot, you’ll be able to build a robot that can drive around your house, see in 3D, and have enough horsepower to create exciting applications.
+The github repository implements a software for path planning that aids a TurtleBot robot in the autonomous navigation. This is developed using Python for (A fictional situation for the ENPM661 Project3). 
 
-A* Path planning algorithm is very effective for known environment. In this project I am approximating the warehouse robot to operate in such an environment. 
+A* Path planning algorithm is very effective for known environment. 
 
 The algorithm is similar to Djikstra's algorithm except for the fact that the total cost is a combination of cost/distance of the current node to the start node (Path cost) and current node to the goal node (heuristic cost). In this implementation I am assuming the robot can travel only in 4 directions, namely North, East, South and West. The path cost of traveling to an adjacent node in the above mentioned direction is set to 1. The Heuristic cost is calculated by the straight line distance between the current node and the goal node. 
 
