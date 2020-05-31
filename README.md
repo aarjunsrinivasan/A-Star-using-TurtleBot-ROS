@@ -10,11 +10,9 @@ The github repository implements a software for path planning that aids a Turtle
 
 A* Path planning algorithm is very effective for known environment. 
 
-The algorithm is similar to Djikstra's algorithm except for the fact that the total cost is a combination of cost/distance of the current node to the start node (Path cost) and current node to the goal node (heuristic cost). In this implementation I am assuming the robot can travel only in 4 directions, namely North, East, South and West. The path cost of traveling to an adjacent node in the above mentioned direction is set to 1. The Heuristic cost is calculated by the straight line distance between the current node and the goal node. 
+The algorithm is similar to Djikstra's algorithm except for the fact that the total cost is a combination of cost/distance of the current node to the start node (Path cost) and current node to the goal node (heuristic cost). TurtleBot is a differential drive robot and In this implementation I am assuming the robot can travel in one of the 8 rpm left and rpm right combinations. The path cost of traveling to an adjacent node in the above mentioned direction is set to the distance travelled. The Heuristic cost is calculated by the straight line distance between the current node and the goal node. 
 
-The total cost is calculated as a combination of path cost + 0.1 * heusristic cost.
-
-A weight of 0.1 is multiplied to the heuristic cost to prevent this cost from over powering the total cost (it the becomes similar to greedy best search).
+The total cost is calculated as a combination of path cost + heusristic cost.
 
 Features:
 
