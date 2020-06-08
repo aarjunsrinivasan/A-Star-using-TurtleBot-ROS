@@ -33,205 +33,134 @@ The user then inputs the start and end nodes for calculation.
 Once the user inputs the start and end nodes the software calculates the shortest path between the two nodes. The below picture shows the visual of the selected path. 
 
 
+The project has been developed over 4 phases:
+- Phase-1: Installation of ROS and V-REP
+- Phase-2: Implementation of A* on a non-holonomic robot
+- Phase-3: Implementation of A* on a differential-drive robot
+- Phase-4: Implementation of A* on Turtlebot using ROS
 
-## License
-```
-MIT License
+Phases 1 and 2 have been implemented on another [repository](https://github.com/urastogi885/a-star-robot). A sample output for can be found [here](https://github.com/urastogi885/a-star-turtlebot#phase3-output)
 
-Copyright (c) 2020 Arjun Srinivasan Ambalam
+## Authors
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+- [Umang Rastogi](https://github.com/urastogi885)
+- [Naman Gupta](https://github.com/namangupta98)
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## Todo
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+- Add path smoothing
 
-## Product Backlog and Sprint Schedule
+## Dependencies
 
-Please vist the link at:
+- Ubuntu 16.04/18.04
+- ROS Kinetic
+- Gazebo
+- Turtlebot3 Packages
+- Python Packages: Numpy, OpenCV-Python, Math, Queue
 
-https://docs.google.com/a/terpmail.umd.edu/spreadsheets/d/12z8tL9RKelgzJ8GJdyQ-GIjZYogpATpe3jIa_0ffNng/edit?usp=sharing
+## Install Dependencies
 
-## Install OpenCV
-Installation can be done using the following website:
-
-https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html?
-
-1. Create a temporary directory, which we denote as <cmake_binary_dir>, where you want to put the generated Makefiles, project files as well the object files and output binaries.
-
-2. Enter the <cmake_binary_dir> and type
-```
-cmake [<some optional parameters>] <path to the OpenCV source directory>
-```
-for example
-```
-cd ~/opencv
-mkdir release
-cd release
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
-```
-
-3. Enter the created temporary directory (<cmake_binary_dir>) and proceed with:
+- Install Python3, Python3-tk, and the necessary libraries: (if not already installed)
 
 ```
-make
-sudo make install
-```
-## Standard install via command-line (How to Build)
-```
-git clone --recursive https://github.com/senthilarul/Midterm-APathPlanning.git
-cd <path to repository>
-mkdir build
-cd build
-cmake ..
-make
-Run tests: ./test/cpp-test
-Run program: ./app/shell-app
+sudo apt install python3 python3-tk
+sudo apt install python3-pip
+pip3 install numpy opencv-python
 ```
 
-## Building for code coverage
-```
-sudo apt-get install lcov
-cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug ../
-make
-make code_coverage
-```
-This generates a index.html page in the build/coverage sub-directory that can be viewed locally in a web browser.
-
-## Working with Eclipse IDE ##
-
-## Installation
-
-In your Eclipse workspace directory (or create a new one), checkout the repo (and submodules)
-```
-mkdir -p ~/workspace
-cd ~/workspace
-git clone --recursive https://github.com/senthilarul/Midterm-APathPlanning.git
-```
-
-In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of Midterm-APathPlanning
+- Check if your system successfully installed all the dependencies
+- Open terminal using Ctrl+Alt+T and enter python3.
+- The terminal should now present a new area represented by >>> to enter python commands
+- Now use the following commands to check libraries: (Exit python window using Ctrl+Z if an error pops up while running 
+the below commands)
 
 ```
-cd ~/workspace
-mkdir -p astar-eclipse
-cd astar-eclipse
-cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../Midterm-APathPlanning/
+import tkinter
+import numpy
+import cv2
+import math
+import queue
 ```
 
-## Import
-
-Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
-Select "astar-eclipse" directory created previously as root directory -> Finish
-
-# Edit
-
-Source files may be edited under the "[Source Directory]" label in the Project Explorer.
-
-
-## Build
-
-To build the project, in Eclipse, unfold astar-eclipse project in Project Explorer,
-unfold Build Targets, double click on "all" to build all projects.
-
-## Run
-
-1. In Eclipse, right click on the astar-eclipse in Project Explorer,
-select Run As -> Local C/C++ Application
-
-2. Choose the binaries to run (e.g. shell-app, cpp-test for unit testing)
-
-
-## Debug
-
-
-1. Set breakpoint in source file (i.e. double click in the left margin on the line you want 
-the program to break).
-
-2. In Eclipse, right click on the astar-eclipse in Project Explorer, select Debug As -> 
-Local C/C++ Application, choose the binaries to run (e.g. shell-app).
-
-3. If prompt to "Confirm Perspective Switch", select yes.
-
-4. Program will break at the breakpoint you set.
-
-5. Press Step Into (F5), Step Over (F6), Step Return (F7) to step/debug your program.
-
-6. Right click on the variable in editor to add watch expression to watch the variable in 
-debugger window.
-
-7. Press Terminate icon to terminate debugging and press C/C++ icon to switch back to C/C++ 
-perspetive view (or Windows->Perspective->Open Perspective->C/C++).
-
-
-## Plugins
-
-- CppChEclipse
-
-    To install and run cppcheck in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> cppcheclipse.
-    Set cppcheck binary path to "/usr/bin/cppcheck".
-
-    2. To run CPPCheck on a project, right click on the project name in the Project Explorer 
-    and choose cppcheck -> Run cppcheck.
-
-
-- Google C++ Sytle
-
-    To include and use Google C++ Style formatter in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> Code Style -> Formatter. 
-    Import [eclipse-cpp-google-style][reference-id-for-eclipse-cpp-google-style] and apply.
-
-    2. To use Google C++ style formatter, right click on the source code or folder in 
-    Project Explorer and choose Source -> Format
-
-[reference-id-for-eclipse-cpp-google-style]: https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-cpp-google-style.xml
-
-- Git
-
-    It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project. If you're interested in this, try it out yourself and contact me on Canvas.
-
-## Doxygen 
-
-To install Doxygen
-
+- If you want to work on Ubuntu 16.04, you will need to install [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+by following the instructions given on referenced web-page.
+- If you want to work on Ubuntu 18.04, you will need to install [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
+by following the instructions given on referenced web-page.
+- We recommend installing the full-desktop version of ROS because it automatically installs the latest compatible version of
+Gazebo on your system.
+- If you wish to install Gazebo separately, then follow the instruction on the [Gazebo install page](http://gazebosim.org/tutorials?tut=install_ubuntu&cat=install).
+- Install Turtlebot-3 package and its dependencies:
 ```
-sudo apt install doxygen
+cd ~/<ROS_Workspace>/src
+git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+cd  ../ && catkin_make
+sudo su
+cp -r src/turtlebot3/ /opt/ros/<distro>/share/
+cp -r src/turtlebot3_msgs/ /opt/ros/<distro>/share/
+cp -r src/turtlebot3_simulations/ /opt/ros/<distro>/share/
+```
+- Using the same terminal window, check installation of turtlebot3:
+```
+source devel/setup.bash
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+```
+- Note that Turtlebot-3 package is supported by ROS Melodic as well as Kinetic.
+
+## Phase3 Output
+
+In phase-3, a video output was generated to show the exploration and final path a differential-drive robot might take 
+using the OpenCV library. The output for one case is presented below.
+
+<p align="center">
+  <img src="https://github.com/urastogi885/a-star-turtlebot/blob/master/images/phase3.gif">
+  <br><b>Figure 2 - Exploration of a differential-drive robot using A* to find optimal path from start to goal</b><br>
+</p>
+ 
+## Run Instructions
+
+- Clone the repository in your ROS workspace. Type
+```
+cd ~/<ROS_Workspace>/src
+git clone https://github.com/urastogi885/a-star-turtlebot
 ```
 
-once the installation is over we can generate the Doxygen documentation by running
-```
-doxygen ./Doxygen
-```
+- If you have a compressed version of the project, extract it, go into project directory, open the terminal, and type:
 
-## Demo 
-
-To run the demo naviagate to the project directory and enter:
 ```
-cd build
-./app/shell-app
+python3 a_star_turtlebot.py start_x,start_y,start_orientation goal_x,goal_y rpm1,rpm2,clearance animation
+python3 a_star_turtlebot.py -4,-4.5,0 4.25,2.75 30,25,5 0
 ```
 
-The demo runs and gives the user 2 option.
-1) to use a default map
-2) to upload a new map
+- This would generate a text file that will be used to run the Turtlebot-3 in Gazebo.
+- Note the following to try the code with other inputs:
+    - The origin of the map is taken at the center of the map s make sure to take into consideration in which 
+    quadrant your points lie.
+    - Provide start and goal coordinates in meters while start orientation is to be provided in degrees.
+    - In addition to that, clearance is taken in centimeters.
+    - Refer documentation of [*a_star_turtlebot.py*](https://github.com/urastogi885/a-star-turtlebot/blob/master/a_star_turtlebot.py) to
+    understand further about input arguments.
+    - Set animation to 1 to generate an exploration output as shown in [Phase3 Output](https://github.com/urastogi885/a-star-turtlebot#phase3-output).
+    Note that this drastically increases exploration time. 
+- Launch the world, spawn turtlebot, navigate it to the desired goal point. Type:
 
-if the user is uploading a new map they have to enter the full path of the map. Also, the map should be in .csv format. The details regarding developing a .csv file for the map has been discussed earlier.
+```
+cd ~/<ROS_Workspace>
+source devel/setup.bash
+catkin_make or catkin build (For ROS Melodic, you might have to use catkin build instead of catkin_make)
+roslaunch a-star-turtlebot launcher_1.launch
+```
 
-After the user inputs a map, the map is displays as a combination of numbers and 'X'. The 'X' denote a obstacle, while the number denote the traversable nodes. The user can input the start node from which the robot starts as well as the end node to which it must reach. The software calculates the shortest path and displays the selected path as a openCV diagram.
+- Stop the execution, using ```Ctrl + C```. Do not close this terminal.
+- Open *planner.py* from the scripts folder, replace *commander_1.txt* by *commander_2.txt* in the main section of the file.
+- Essentially, the following line needs to be changed in *planner.py*:
+```
+with open(ros_root.get_path('a-star-turtlebot') + '/output_files/commander_1.txt', 'r') as command:
+```
 
+- From the same terminal, run:
+```
+roslaunch a-star-turtlebot launcher_2.launch
+```
 
