@@ -1,12 +1,18 @@
 # A* Path Planning-implementation on TurtleBot-ROS|Python
+[![Build Status](https://travis-ci.org/urastogi885/a-star-turtlebot.svg?branch=master)](https://travis-ci.org/urastogi885/a-star-turtlebot)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/urastogi885/a-star-turtlebot/blob/master/LICENSE)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
----
 
 ## Overview - A Python implemntation for A* Path Planning algorithm
 
-TurtleBot is a low-cost, personal robot kit with open-source software. TurtleBot was created at Willow Garage by Melonee Wise and Tully Foote in November 2010. With TurtleBot, you’ll be able to build a robot that can drive around your house, see in 3D, and have enough horsepower to create exciting applications.
-The github repository implements a software for path planning that aids a TurtleBot robot in the autonomous navigation. This is developed using Python for (A fictional situation for the ENPM661 Project3). 
+TurtleBot is a low-cost, personal robot kit with open-source software. TurtleBot was created at Willow Garage by Melonee Wise and Tully Foote in November 2010. In this project, A* algorithm is simulated on Turtle bot differential drive (non-holonomic) mobile robot in a defined static world. We are using Turtlebot in ROS-Gazebo for the simulation. The code plans the path for Turtlebot to follow which  contains linear and angular velocities needed by the robot to reach its goal position. A ROS node publishes these velocities at regular 
+intervals to simulate Turtlebot's movement in Gazebo. A sample of the simulation from one end of the map to the other 
+is shown below.
+
+<p align="center">
+  <p align="center"><img src="astar.png"></p>
+  <br><b>Figure 1 - Turtlebot-3 Burger moving in known world using velocities provided by A* planner</b><br>
+</p>
 
 A* Path planning algorithm is very effective for known environment. 
 
@@ -227,3 +233,5 @@ The demo runs and gives the user 2 option.
 if the user is uploading a new map they have to enter the full path of the map. Also, the map should be in .csv format. The details regarding developing a .csv file for the map has been discussed earlier.
 
 After the user inputs a map, the map is displays as a combination of numbers and 'X'. The 'X' denote a obstacle, while the number denote the traversable nodes. The user can input the start node from which the robot starts as well as the end node to which it must reach. The software calculates the shortest path and displays the selected path as a openCV diagram.
+
+
