@@ -43,8 +43,8 @@ Phases 1 and 2 have been implemented on another [repository](https://github.com/
 
 ## Authors
 
-- [Umang Rastogi](https://github.com/urastogi885)
-- [Naman Gupta](https://github.com/namangupta98)
+- [Arjun Srinivasan](https://github.com/aarjunsrinivasan)
+- [Arun Kumar](https://github.com/akdhandy)
 
 ## Todo
 
