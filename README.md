@@ -1,4 +1,4 @@
-# A* Path Planning-implementation on TurtleBot-ROS Gazebo Simulation
+# Implementation of A* algorithm on TurtleBot-ROS Gazebo Simulation
 
 
 
@@ -16,28 +16,13 @@ A* Path planning algorithm is very effective for known environment.
 The algorithm is similar to Djikstra's algorithm except for the fact that the total cost is a combination of cost/distance of the current node to the start node (Path cost) and current node to the goal node (heuristic cost). TurtleBot is a differential drive robot and In this implementation I am assuming the robot can travel in one of the 8 rpm left and rpm right combinations. The path cost of traveling to an adjacent node in the above mentioned direction is set to the distance travelled. The Heuristic cost is calculated by the straight line distance between the current node and the goal node. 
 
 The total cost is calculated as a combination of path cost + heusristic cost.
-
-
-
 Once the user inputs the start and end nodes the software calculates the shortest path between the two nodes. The below picture shows the visual of the selected path. 
 
-
-The project has been developed over 4 phases:
-- Phase-1: Installation of ROS and V-REP
-- Phase-2: Implementation of A* on a non-holonomic robot
-- Phase-3: Implementation of A* on a differential-drive robot
-- Phase-4: Implementation of A* on Turtlebot using ROS
-
-Phases 1 and 2 have been implemented on another [repository](https://github.com/urastogi885/a-star-robot). A sample output for can be found [here](https://github.com/urastogi885/a-star-turtlebot#phase3-output)
 
 ## Authors
 
 - [Arjun Srinivasan](https://github.com/aarjunsrinivasan)
-- [Arun Kumar](https://github.com/akdhandy)
 
-## Todo
-
-- Add path smoothing
 
 ## Dependencies
 
@@ -46,26 +31,6 @@ Phases 1 and 2 have been implemented on another [repository](https://github.com/
 - Gazebo
 - Turtlebot3 Packages
 - Python Packages: Numpy, OpenCV-Python, Math, Queue
-
-## Libraries
-
--   math
--   rospy
--   numpy
--   time
--   matplotlib
--   heapq
--   argparse
--   geometry_msgs-Twist
--   std_msgs.msg-String
-
-- If you want to work on Ubuntu 16.04, you will need to install [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
-by following the instructions given on referenced web-page.
-- If you want to work on Ubuntu 18.04, you will need to install [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
-by following the instructions given on referenced web-page.
-- We recommend installing the full-desktop version of ROS because it automatically installs the latest compatible version of
-Gazebo on your system.
-- If you wish to install Gazebo separately, then follow the instruction on the [Gazebo install page](http://gazebosim.org/tutorials?tut=install_ubuntu&cat=install).
 - Install Turtlebot-3 package and its dependencies:
 
 In your .bashrc file, include the following statements and source it.
@@ -89,7 +54,7 @@ From the downloaded file,which is the package "searchbot" folder, copy to /catki
 $ cd ~/catkin_ws/
 $ source ~/catkin_ws/devel/setup.bash
 
-Instructions to run:
+## Instructions to run:
 
 The inputs from the user are coordinates of start point, orientation of start point (in degrees), coordinates of goal point, two RPM values and clearance.
 
