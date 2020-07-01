@@ -38,7 +38,7 @@ source ~/catkin_ws/devel/setup.bash
 export TURTLEBOT3_MODEL=burger
 
 To create a catkin workspace and install dependecies for turtlebot3 package, run the following commands:
-'''
+```
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src/
 git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
@@ -46,14 +46,13 @@ git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
 git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations
 cd ~/catkin_ws/
 catkin_make
-'''
-
+```
 
 From the repo copy the folder "searchbot" to /catkin_ws/src/ and run the following commands:
-'''
+```
 cd ~/catkin_ws/
 source ~/catkin_ws/devel/setup.bash
-'''
+```
 ## Instructions to run:
 
 The inputs from the user are coordinates of start point, orientation of start point (in degrees), coordinates of goal point, two RPM values and clearance.
@@ -64,11 +63,13 @@ The inputs from the user are coordinates of start point, orientation of start po
 
 -In the terminal run the following command:
 
+```
 roslaunch searchbot astar.launch  x_pos:=4.5 y_pos:=3.0 yaw:=3.142
+```
 
--The x,y coordinates of start point in gazebo should be given in arguments 'x_pos' and 'y_pos' respectively in the terminal. The argument 'yaw' is (3.14 + orientation at start of the robot in radians). This ensures the turtlebot to spawn at correct position and orientation in gazebo.
+- The x,y coordinates of start point in gazebo should be given in arguments 'x_pos' and 'y_pos' respectively in the terminal. The argument 'yaw' is (3.14 +    orientation at start of the robot in radians). This ensures the turtlebot to spawn at correct position and orientation in gazebo.
 
--The start coordinates and goal coordinates should be given as negative of the coordinates as observed in right-handed system because the map given has negative axes. For example, if the robot start point is bottom left (-4.5,-4.5) in right-handed coordinate system, it should be given as (4.5,4.5).
+- The start coordinates and goal coordinates should be given as negative of the coordinates as observed in right-handed system because the map given has negative axes. For example, if the robot start point is bottom left (-4.5,-4.5) in right-handed coordinate system, it should be given as (4.5,4.5).
 
 
 
