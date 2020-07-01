@@ -1,6 +1,5 @@
 # A* Path Planning-implementation on TurtleBot-ROS|Python
-[![Build Status](https://travis-ci.org/urastogi885/a-star-turtlebot.svg?branch=master)](https://travis-ci.org/urastogi885/a-star-turtlebot)
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/urastogi885/a-star-turtlebot/blob/master/LICENSE)
+
 
 
 ## Overview - A Python implemntation for A* Path Planning algorithm
@@ -20,15 +19,7 @@ The algorithm is similar to Djikstra's algorithm except for the fact that the to
 
 The total cost is calculated as a combination of path cost + heusristic cost.
 
-Features:
 
-A user a input a warehouse map during run time to run the the path planning calculations. The warehouse map is inputed as a .csv file. The obstacles are represented as a '0' in the cell and the other cells are represented by 1.
-The below image represents the excel file. The excel file is later exported as a .csv file.
-
-
-The user then inputs the start and end nodes for calculation.
-
-<p align="center"><img src="astar.png"></p>
 
 Once the user inputs the start and end nodes the software calculates the shortest path between the two nodes. The below picture shows the visual of the selected path. 
 
@@ -58,29 +49,17 @@ Phases 1 and 2 have been implemented on another [repository](https://github.com/
 - Turtlebot3 Packages
 - Python Packages: Numpy, OpenCV-Python, Math, Queue
 
-## Install Dependencies
+## Libraries
 
-- Install Python3, Python3-tk, and the necessary libraries: (if not already installed)
-
-```
-sudo apt install python3 python3-tk
-sudo apt install python3-pip
-pip3 install numpy opencv-python
-```
-
-- Check if your system successfully installed all the dependencies
-- Open terminal using Ctrl+Alt+T and enter python3.
-- The terminal should now present a new area represented by >>> to enter python commands
-- Now use the following commands to check libraries: (Exit python window using Ctrl+Z if an error pops up while running 
-the below commands)
-
-```
-import tkinter
-import numpy
-import cv2
-import math
-import queue
-```
+-   math
+-   rospy
+-   numpy
+-   time
+-   matplotlib
+-   heapq
+-   argparse
+-   geometry_msgs-Twist
+-   std_msgs.msg-String
 
 - If you want to work on Ubuntu 16.04, you will need to install [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
 by following the instructions given on referenced web-page.
@@ -90,77 +69,68 @@ by following the instructions given on referenced web-page.
 Gazebo on your system.
 - If you wish to install Gazebo separately, then follow the instruction on the [Gazebo install page](http://gazebosim.org/tutorials?tut=install_ubuntu&cat=install).
 - Install Turtlebot-3 package and its dependencies:
-```
-cd ~/<ROS_Workspace>/src
-git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
-git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-cd  ../ && catkin_make
-sudo su
-cp -r src/turtlebot3/ /opt/ros/<distro>/share/
-cp -r src/turtlebot3_msgs/ /opt/ros/<distro>/share/
-cp -r src/turtlebot3_simulations/ /opt/ros/<distro>/share/
-```
-- Using the same terminal window, check installation of turtlebot3:
-```
-source devel/setup.bash
-roslaunch turtlebot3_gazebo turtlebot3_world.launch
-```
-- Note that Turtlebot-3 package is supported by ROS Melodic as well as Kinetic.
 
-## Phase3 Output
+In your .bashrc file, include the following statements and source it.
 
-In phase-3, a video output was generated to show the exploration and final path a differential-drive robot might take 
-using the OpenCV library. The output for one case is presented below.
+source /opt/ros/kinetic/setup.bash
+source ~/catkin_ws/devel/setup.bash
+export TURTLEBOT3_MODEL=burger
 
-<p align="center">
-  <img src="https://github.com/urastogi885/a-star-turtlebot/blob/master/images/phase3.gif">
-  <br><b>Figure 2 - Exploration of a differential-drive robot using A* to find optimal path from start to goal</b><br>
-</p>
- 
-## Run Instructions
+To create a catkin workspace and install dependecies for turtlebot3 package, run the following commands:
 
-- Clone the repository in your ROS workspace. Type
-```
-cd ~/<ROS_Workspace>/src
-git clone https://github.com/urastogi885/a-star-turtlebot
-```
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws/src/
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+$ cd ~/catkin_ws/
+$ catkin_make
 
-- If you have a compressed version of the project, extract it, go into project directory, open the terminal, and type:
 
-```
-python3 a_star_turtlebot.py start_x,start_y,start_orientation goal_x,goal_y rpm1,rpm2,clearance animation
-python3 a_star_turtlebot.py -4,-4.5,0 4.25,2.75 30,25,5 0
-```
+From the downloaded file,which is the package "searchbot" folder, copy to /catkin_ws/src/ and run the following commands:
 
-- This would generate a text file that will be used to run the Turtlebot-3 in Gazebo.
-- Note the following to try the code with other inputs:
-    - The origin of the map is taken at the center of the map s make sure to take into consideration in which 
-    quadrant your points lie.
-    - Provide start and goal coordinates in meters while start orientation is to be provided in degrees.
-    - In addition to that, clearance is taken in centimeters.
-    - Refer documentation of [*a_star_turtlebot.py*](https://github.com/urastogi885/a-star-turtlebot/blob/master/a_star_turtlebot.py) to
-    understand further about input arguments.
-    - Set animation to 1 to generate an exploration output as shown in [Phase3 Output](https://github.com/urastogi885/a-star-turtlebot#phase3-output).
-    Note that this drastically increases exploration time. 
-- Launch the world, spawn turtlebot, navigate it to the desired goal point. Type:
+$ cd ~/catkin_ws/
+$ source ~/catkin_ws/devel/setup.bash
 
-```
-cd ~/<ROS_Workspace>
-source devel/setup.bash
-catkin_make or catkin build (For ROS Melodic, you might have to use catkin build instead of catkin_make)
-roslaunch a-star-turtlebot launcher_1.launch
-```
+Instructions to run:
 
-- Stop the execution, using ```Ctrl + C```. Do not close this terminal.
-- Open *planner.py* from the scripts folder, replace *commander_1.txt* by *commander_2.txt* in the main section of the file.
-- Essentially, the following line needs to be changed in *planner.py*:
-```
-with open(ros_root.get_path('a-star-turtlebot') + '/output_files/commander_1.txt', 'r') as command:
-```
+The inputs from the user are coordinates of start point, orientation of start point (in degrees), coordinates of goal point, two RPM values and clearance.
 
-- From the same terminal, run:
-```
-roslaunch a-star-turtlebot launcher_2.launch
-```
+The orientation of goal point is taken by default as 0.
+
+The clearance given by the user is 0.1 (minimum clearance).
+
+In the terminal run the following command:
+
+roslaunch searchbot astar.launch  x_pos:=4.5 y_pos:=3.0 yaw:=3.142
+
+The x,y coordinates of start point in gazebo should be given in arguments 'x_pos' and 'y_pos' respectively in the terminal. The argument 'yaw' is (3.14 + orientation at start of the robot in radians). This ensures the turtlebot to spawn at correct position and orientation in gazebo.
+
+The start coordinates and goal coordinates should be given as negative of the coordinates as observed in right-handed system because the map given has negative axes. For example, if the robot start point is bottom left (-4.5,-4.5) in right-handed coordinate system, it should be given as (4.5,4.5).
+
+Inputs for the submitted videos:
+
+Video 1:
+For Manual input enter 1 else enter 2
+1
+Enter the clearance.1
+Please enter the rpm1:3
+Please enter the rpm2:4
+Please enter start point x coordinate:4.5
+Please enter start point y coordinate:3.0
+Please enter start orientation in degrees:0
+Please enter goal point x coordinate:-4.5
+Please enter goal point y coordinate:-3.0
+
+Video2:
+For Manual input enter 1 else enter 2
+1
+Enter the clearance.1
+Please enter the rpm1:3
+Please enter the rpm2:4
+Please enter start point x coordinate:4.5
+Please enter start point y coordinate:3.0
+Please enter start orientation in degrees:0
+Please enter goal point x coordinate:0
+Please enter goal point y coordinate:3.0
+
 
