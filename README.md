@@ -35,9 +35,11 @@ Once the user inputs the start and end nodes the software calculates the shortes
 
 In your .bashrc file, include the following statements and source it.
 
+```
 source /opt/ros/kinetic/setup.bash
 source ~/catkin_ws/devel/setup.bash
 export TURTLEBOT3_MODEL=burger
+```
 
 To create a catkin workspace and install dependecies for turtlebot3 package, run the following commands:
 ```
@@ -59,11 +61,11 @@ source ~/catkin_ws/devel/setup.bash
 
 The inputs from the user are coordinates of start point, orientation of start point (in degrees), coordinates of goal point, two RPM values and clearance.
 
--The orientation of goal point is taken by default as 0.
+- The orientation of goal point is taken by default as 0.
 
--The clearance given by the user is 0.1 (minimum clearance).
+- The clearance given by the user is 0.1 (minimum clearance).
 
--In the terminal run the following command:
+- In the terminal run the following command:
 
 ```
 roslaunch searchbot astar.launch  x_pos:=4.5 y_pos:=3.0 yaw:=3.142
