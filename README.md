@@ -1,12 +1,10 @@
-# A* Path Planning-implementation on TurtleBot-ROS|Python
+# A* Path Planning-implementation on TurtleBot-ROS Gazebo Simulation
 
 
 
-## Overview - A Python implemntation for A* Path Planning algorithm
-
-TurtleBot is a low-cost, personal robot kit with open-source software. TurtleBot was created at Willow Garage by Melonee Wise and Tully Foote in November 2010. In this project, A* algorithm is simulated on Turtle bot differential drive (non-holonomic) mobile robot in a defined static world. We are using Turtlebot in ROS-Gazebo for the simulation. The code plans the path for Turtlebot to follow which  contains linear and angular velocities needed by the robot to reach its goal position. A ROS node publishes these velocities at regular 
-intervals to simulate Turtlebot's movement in Gazebo. A sample of the simulation from one end of the map to the other 
-is shown below.
+## Overview - Implemntation for A* Path Planning algorithm
+In this project, A* algorithm is simulated on Turtle bot differential drive (non-holonomic) mobile robot in a defined static world. We are using Turtlebot in ROS-Gazebo for the simulation. The code plans the path for Turtlebot to follow which  contains linear and angular velocities needed by the robot to reach its goal position. A ROS node publishes these velocities at regular 
+intervals to simulate Turtlebot's movement in Gazebo. The map in which the bot navigates is shown below.
 
 <p align="center">
   <p align="center"><img src="astar.png"></p>
