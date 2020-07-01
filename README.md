@@ -1,8 +1,5 @@
 # Implementation of A* algorithm on TurtleBot-ROS Gazebo Simulation
 
-
-
-## Overview 
 In this project, A* algorithm is simulated on Turtle bot differential drive (non-holonomic) mobile robot in a defined static world. We are using Turtlebot in ROS-Gazebo for the simulation. The code plans the path for Turtlebot to follow which  contains linear and angular velocities needed by the robot to reach its goal position. A ROS node publishes these velocities at regular 
 intervals to simulate Turtlebot's movement in Gazebo. The map in which the bot navigates is shown below.
 
@@ -41,21 +38,22 @@ source ~/catkin_ws/devel/setup.bash
 export TURTLEBOT3_MODEL=burger
 
 To create a catkin workspace and install dependecies for turtlebot3 package, run the following commands:
-
-$ mkdir -p ~/catkin_ws/src
-$ cd ~/catkin_ws/src/
-$ git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
-$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations
-$ cd ~/catkin_ws/
-$ catkin_make
+'''
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src/
+git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations
+cd ~/catkin_ws/
+catkin_make
+'''
 
 
 From the repo copy the folder "searchbot" to /catkin_ws/src/ and run the following commands:
-
-$ cd ~/catkin_ws/
-$ source ~/catkin_ws/devel/setup.bash
-
+'''
+cd ~/catkin_ws/
+source ~/catkin_ws/devel/setup.bash
+'''
 ## Instructions to run:
 
 The inputs from the user are coordinates of start point, orientation of start point (in degrees), coordinates of goal point, two RPM values and clearance.
