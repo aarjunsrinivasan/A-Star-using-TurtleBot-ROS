@@ -15,6 +15,8 @@ The algorithm is similar to Djikstra's algorithm except for the fact that the to
 The total cost is calculated as a combination of path cost + heusristic cost.
 Once the user inputs the start and end nodes the software calculates the shortest path between the two nodes. The below picture shows the visual of the selected path. 
 
+![Visualisation of A* path generation](/Astar.gif)
+
 
 ## Authors
 
